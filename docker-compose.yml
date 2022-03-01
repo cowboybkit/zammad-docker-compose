@@ -2,7 +2,7 @@ version: '3'
 
 services:
 
-  zammad-backup:
+  ./zammad-backup:
     command: ["zammad-backup"]
     depends_on:
       - zammad-railsserver
@@ -16,8 +16,8 @@ services:
     image: ${IMAGE_REPO}:zammad-postgresql${VERSION}
     restart: ${RESTART}
     volumes:
-      - zammad-backup:/var/tmp/zammad
-      - zammad-data:/opt/zammad
+      - ./zammad-backup:/var/tmp/zammad
+      - ./zammad-data:/opt/zammad
 
   zammad-elasticsearch:
     environment:
@@ -25,7 +25,7 @@ services:
     image: ${IMAGE_REPO}:zammad-elasticsearch${VERSION}
     restart: ${RESTART}
     volumes:
-      - elasticsearch-data:/usr/share/elasticsearch/data
+      - ./elasticsearch-data:/usr/share/elasticsearch/data
 
   zammad-init:
     command: ["zammad-init"]
@@ -39,7 +39,7 @@ services:
     image: ${IMAGE_REPO}:zammad${VERSION}
     restart: on-failure
     volumes:
-      - zammad-data:/opt/zammad
+      - ./zammad-data:/opt/zammad
 
   zammad-memcached:
     command: memcached -m 256M
@@ -55,7 +55,7 @@ services:
     image: ${IMAGE_REPO}:zammad${VERSION}
     restart: ${RESTART}
     volumes:
-      - zammad-data:/opt/zammad
+      - ./zammad-data:/opt/zammad
 
   zammad-postgresql:
     environment:
@@ -64,7 +64,7 @@ services:
     image: ${IMAGE_REPO}:zammad-postgresql${VERSION}
     restart: ${RESTART}
     volumes:
-      - postgresql-data:/var/lib/postgresql/data
+      - ./postgresql-data:/var/lib/postgresql/data
 
   zammad-railsserver:
     command: ["zammad-railsserver"]
@@ -78,7 +78,7 @@ services:
     image: ${IMAGE_REPO}:zammad${VERSION}
     restart: ${RESTART}
     volumes:
-      - zammad-data:/opt/zammad
+      - ./zammad-data:/opt/zammad
 
   zammad-redis:
     image: redis:6.2.5-alpine
@@ -96,7 +96,7 @@ services:
     image: ${IMAGE_REPO}:zammad${VERSION}
     restart: ${RESTART}
     volumes:
-      - zammad-data:/opt/zammad
+      - ./zammad-data:/opt/zammad
 
   zammad-websocket:
     command: ["zammad-websocket"]
@@ -110,14 +110,10 @@ services:
     image: ${IMAGE_REPO}:zammad${VERSION}
     restart: ${RESTART}
     volumes:
-      - zammad-data:/opt/zammad
+      - ./zammad-data:/opt/zammad
 
 volumes:
   elasticsearch-data:
-    driver: local
   postgresql-data:
-    driver: local
   zammad-backup:
-    driver: local
   zammad-data:
-    driver: local
