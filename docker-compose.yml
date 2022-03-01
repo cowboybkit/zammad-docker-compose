@@ -52,6 +52,9 @@ services:
       - "8080"
     ports:
       - 8080:8080
+    environment:
+      - VIRTUAL_HOST=helpdesk.dragonwar.io
+      - NGINX_SERVER_SCHEME=https
     depends_on:
       - zammad-railsserver
     image: ${IMAGE_REPO}:zammad${VERSION}
