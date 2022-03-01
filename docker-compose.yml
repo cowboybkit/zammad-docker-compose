@@ -68,6 +68,19 @@ services:
     volumes:
       - postgresql-data:/var/lib/postgresql/data
 
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${POSTGRES_USER:-admin@heatmob.net}
+      PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_PASS:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    depends_on:
+      - zammad-postgresql
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "${PGADMIN_PORT:-8920}:80"
   zammad-railsserver:
     command: ["zammad-railsserver"]
     depends_on:
@@ -122,4 +135,6 @@ volumes:
   zammad-backup:
     driver: local
   zammad-data:
+    driver: local
+  pgadmin:
     driver: local
