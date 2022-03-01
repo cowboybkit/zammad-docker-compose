@@ -60,6 +60,8 @@ services:
       - zammad-data:/opt/zammad
 
   zammad-postgresql:
+    ports:
+      - 5432:5432
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASS}
