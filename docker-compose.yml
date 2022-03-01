@@ -2,7 +2,7 @@ version: '3'
 
 services:
 
-  ./zammad-backup:
+  zammad-backup:
     command: ["zammad-backup"]
     depends_on:
       - zammad-railsserver
