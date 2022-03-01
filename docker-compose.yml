@@ -72,8 +72,8 @@ services:
     image: dpage/pgadmin4
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${POSTGRES_USER:-admin@heatmob.net}
-      PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_PASS:-admin}
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@heatmob.net}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
       PGADMIN_CONFIG_SERVER_MODE: "False"
     depends_on:
       - zammad-postgresql
