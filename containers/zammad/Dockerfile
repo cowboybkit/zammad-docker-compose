@@ -6,7 +6,7 @@ ARG BUILD_DATE
 ARG DEBIAN_FRONTEND=noninteractive
 
 
-ENV GIT_TAG 5.1.2
+ENV GIT_TAG 5.1.3
 ENV GIT_URL ${PROJECT_URL}.git
 ENV PROJECT_URL https://github.com/cowboybkit/zammad
 ENV RAILS_ENV production
@@ -41,7 +41,7 @@ LABEL org.label-schema.build-date="$BUILD_DATE" \
       org.label-schema.schema-version="5.0.3" \
       org.label-schema.docker.cmd="sysctl -w vm.max_map_count=262144;docker-compose up"
 
-ENV GIT_TAG 5.1.2
+ENV GIT_TAG 5.1.3
 ENV RAILS_ENV production
 ENV RAILS_LOG_TO_STDOUT true
 ENV ZAMMAD_DIR /opt/zammad
