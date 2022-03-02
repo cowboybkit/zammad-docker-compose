@@ -5,16 +5,15 @@ FROM ruby:2.7.4-slim AS builder
 ARG BUILD_DATE
 ARG DEBIAN_FRONTEND=noninteractive
 
-
-ENV GIT_TAG 5.1.3
+ENV GIT_BRANCH stable
 ENV GIT_URL ${PROJECT_URL}.git
 ENV PROJECT_URL https://github.com/cowboybkit/zammad
 ENV RAILS_ENV production
 ENV RAILS_LOG_TO_STDOUT true
-ENV TAR_GZ_URL ${PROJECT_URL}/archive/refs/tags/${GIT_TAG}.tar.gz
+ENV TAR_GZ_URL ${PROJECT_URL}/archive/${GIT_BRANCH}.tar.gz
 ENV ZAMMAD_DIR /opt/zammad
 ENV ZAMMAD_READY_FILE ${ZAMMAD_DIR}/tmp/zammad.ready
-ENV ZAMMAD_TMP_DIR /tmp/zammad-${GIT_TAG}
+ENV ZAMMAD_TMP_DIR /tmp/zammad-${GIT_BRANCH}
 ENV ZAMMAD_USER zammad
 
 SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
@@ -41,12 +40,12 @@ LABEL org.label-schema.build-date="$BUILD_DATE" \
       org.label-schema.schema-version="5.0.3" \
       org.label-schema.docker.cmd="sysctl -w vm.max_map_count=262144;docker-compose up"
 
-ENV GIT_TAG 5.1.3
+ENV GIT_BRANCH stable
 ENV RAILS_ENV production
 ENV RAILS_LOG_TO_STDOUT true
 ENV ZAMMAD_DIR /opt/zammad
 ENV ZAMMAD_READY_FILE ${ZAMMAD_DIR}/tmp/zammad.ready
-ENV ZAMMAD_TMP_DIR /tmp/zammad-${GIT_TAG}
+ENV ZAMMAD_TMP_DIR /tmp/zammad-${GIT_BRANCH}
 ENV ZAMMAD_USER zammad
 
 COPY setup.sh /tmp
