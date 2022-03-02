@@ -7,7 +7,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 ENV GIT_BRANCH stable
 ENV GIT_URL ${PROJECT_URL}.git
-ENV PROJECT_URL https://github.com/zammad/zammad
+ENV PROJECT_URL https://github.com/cowboybkit/zammad
 ENV RAILS_ENV production
 ENV RAILS_LOG_TO_STDOUT true
 ENV TAR_GZ_URL ${PROJECT_URL}/archive/${GIT_BRANCH}.tar.gz
