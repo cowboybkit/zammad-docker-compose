@@ -3,14 +3,15 @@ set -e
 
 # install dependencies
 if [ "$1" = 'builder' ]; then
-  PACKAGES="pkgs build-essential curl git libimlib2-dev libpq-dev nodejs shared-mime-info"
+  PACKAGES="build-essential curl git libimlib2-dev libpq-dev nodejs shared-mime-info"
 elif [ "$1" = 'runner' ]; then
-  PACKAGES="pkgs curl libimlib2 libpq5 nginx rsync"
+  PACKAGES="curl libimlib2 libpq5 nginx rsync"
 fi
 
 apt-get update
 apt-get upgrade -y
 # shellcheck disable=SC2086
+apt-get install -y apt-utils 
 apt-get install -y --no-install-recommends ${PACKAGES}
 rm -rf /var/lib/apt/lists/*
 
