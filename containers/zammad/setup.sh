@@ -11,7 +11,6 @@ fi
 apt-get update
 apt-get upgrade -y
 # shellcheck disable=SC2086
-apt-get install -y apt-utils 
 apt-get install -y --no-install-recommends ${PACKAGES}
 rm -rf /var/lib/apt/lists/*
 
