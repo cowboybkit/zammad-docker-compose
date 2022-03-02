@@ -3,9 +3,9 @@ set -e
 
 # install dependencies
 if [ "$1" = 'builder' ]; then
-  PACKAGES="build-essential curl git libimlib2-dev libpq-dev nodejs shared-mime-info"
+  PACKAGES="pkgs build-essential curl git libimlib2-dev libpq-dev nodejs shared-mime-info"
 elif [ "$1" = 'runner' ]; then
-  PACKAGES="curl libimlib2 libpq5 nginx rsync"
+  PACKAGES="pkgs curl libimlib2 libpq5 nginx rsync"
 fi
 
 apt-get update
