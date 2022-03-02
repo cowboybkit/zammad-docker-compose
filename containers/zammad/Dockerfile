@@ -5,7 +5,7 @@ FROM ruby:2.7.4-slim AS builder
 ARG BUILD_DATE
 ARG DEBIAN_FRONTEND=noninteractive
 
-ENV GIT_TAG 5.1.1
+ENV GIT_TAG 5.1.2
 ENV GIT_URL ${PROJECT_URL}.git
 ENV PROJECT_URL https://github.com/cowboybkit/zammad
 ENV RAILS_ENV production
