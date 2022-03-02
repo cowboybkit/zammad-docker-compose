@@ -21,8 +21,8 @@ useradd -M -d "${ZAMMAD_DIR}" -s /bin/bash -u 1000 -g 1000 "${ZAMMAD_USER}"
 if [ "$1" = 'builder' ]; then
   cd "$(dirname "${ZAMMAD_TMP_DIR}")"
   curl -s -J -L -O "${TAR_GZ_URL}"
-  tar -xzf zammad-"${GIT_BRANCH}".tar.gz
-  rm zammad-"${GIT_BRANCH}".tar.gz
+  tar -xzf zammad-"${GIT_TAG}".tar.gz
+  rm zammad-"${GIT_TAG}".tar.gz
   cd "${ZAMMAD_TMP_DIR}"
   bundle config set without 'test development mysql'
   bundle install
