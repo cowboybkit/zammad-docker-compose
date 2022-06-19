@@ -16,5 +16,5 @@ LABEL org.label-schema.build-date="$BUILD_DATE" \
 SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
 
 # copy backup script
-COPY containers/zammad-postgresql/backup.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/backup.sh
+# COPY containers/zammad-postgresql/backup.sh /usr/local/bin/
+# RUN chmod +x /usr/local/bin/backup.sh
